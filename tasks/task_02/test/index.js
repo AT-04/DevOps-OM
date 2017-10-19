@@ -5,7 +5,7 @@ const host = api
 
 request = request(host)
 
-describe('Route Index, Hello World', function(){
+describe('Route Index', function(){
     describe('GET / ', function(){
         it('I should return a hello world', function (done) {
             request
