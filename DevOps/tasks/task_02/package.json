@@ -1,0 +1,27 @@
+{
+  "name": "task_02",
+  "version": "1.0.0",
+  "description": "RESTAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AT-04/DevOps-OM.git"
+  },
+  "author": "Simon Ovidio Miranda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AT-04/DevOps-OM/issues"
+  },
+  "homepage": "https://github.com/AT-04/DevOps-OM#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.12.3"
+  }
+}
