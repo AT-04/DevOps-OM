@@ -19,21 +19,36 @@ Vagrant.configure('2') do |config|
    os.image                = ENV['OS_IMAGE']
  end
 
-  config.vm.define ENV['BOX_NAME'] do |s|
-    s.vm.provision :shell, path: ENV['SCRIPT_PATH']
-   
-    s.vm.provision "docker" do | docker |
+  config.vm.define ENV['BOX_NAME_1'] do |s1|
+    s1.vm.provision "docker" do | docker |
      docker.pull_images "sonarqube:5.6.6-alpine"
      docker.pull_images "gocd/gocd-agent-alpine-3.5:v17.3.0"
      docker.pull_images "gocd/gocd-server:v17.3.0"
+     docker.pull_images "jenkinsci/blueocean"
     end
   
-    s.vm.provision "docker_compose"
-    s.vm.provider :openstack do |os, override|
-      os.server_name = ENV['OS_SERVER_NAME']
-      os.flavor = ENV['OS_FLAVOR']
+    s1.vm.provision "docker_compose"
+    s1.vm.provider :openstack do |os, override|
+      os.server_name = ENV['OS_SERVER_NAME_1']
+      os.flavor = ENV['OS_FLAVOR_1']
       override.vm.synced_folder '.', '/vagrant', disabled: true
     end
   end
+
+  config.vm.define ENV['BOX_NAME_2'] do |s2|
+    s2.vm.provision :shell, path: ENV['SCRIPT_PATH']
+   
+    s2.vm.provision "docker" do | docker |
+      docker.pull_images "mongo"
+    end
+  
+    s2.vm.provision "docker_compose"
+    s2.vm.provider :openstack do |os, override|
+      os.server_name = ENV['OS_SERVER_NAME_2']
+      os.flavor = ENV['OS_FLAVOR_2']
+      override.vm.synced_folder '.', '/vagrant', disabled: true
+    end
+  end
+
 end
 
