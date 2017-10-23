@@ -11,3 +11,4 @@ echo "----------- Installing Oracle Java 8 - Option 1 ----------- "
     export PATH=$PATH:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
     
+    
