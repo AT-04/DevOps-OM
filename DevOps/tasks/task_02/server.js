@@ -1,18 +1,21 @@
-var express = require('express'),
+const express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Movie = require('./models/movie'),
-    bodyParser = require('body-parser');
-
+    bodyParser = require('body-parser'),
+    config = require('./config/index');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/movies_test');
+mongoose.connect(config.database).then(
+    () => {console.log('Database is connected') },
+    err => { console.log('Can not connect to the database'+ err)}
+);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./routes/movieRoute');
+const routes = require('./routes/movieRoute');
 routes(app);
 
 app.listen(port);
