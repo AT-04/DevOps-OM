@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (app) {
-    var method = require('../controllers/movie');
+    var method = require('../controllers/movieController');
 
     app
         .route('/movies')

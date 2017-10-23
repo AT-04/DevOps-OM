@@ -1,28 +1,33 @@
 'use strict';
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     Movie = mongoose.model('Movies');
 
 exports
     .postMovie = function (req, res) {
     console.log("POST:", req.body);
-    if (!req.body) {
+    console.log(req.body.title);
+    console.log(req.body.year);
+    if (!req.body.title || !req.body.year) {
         res
             .status(403)
-            .json({error: true, message: 'Empty request'})
+            .json({success: true, message: 'Please enter title and year.'});
     }
-    var new_movie = new Movie(req.body);
-    new_movie
-        .save(function (err, movie) {
-            if (err) {
-                res
-                    .status(403)
-                    .json({error: true, message: 'Params request'})
-            }
-            else {
-                res.status(201)
-                  .json({message: "Movie successfully added!", movie});
-            }
-        });
+    else {
+        let new_movie = new Movie(req.body);
+        new_movie
+            .save(function (err, movie) {
+                if (err) {
+                    res
+                        .status(403)
+                        .json({error: true, message: 'Params request'})
+                }
+                else {
+                    res
+                        .status(201)
+                        .json({message: "Movie successfully added!", movie});
+                }
+            });
+    }
 };
 
 exports
