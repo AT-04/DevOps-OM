@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MovieSchema = new Schema({
-    title: {type: String, require: true},
-    year: {type: String, require: true}
-});
+        title: {type: String, require: true},
+        year: {type: Number, require: true}
+    },
+    {
+        versionKey: false
+    });
 
-module.exports = mongoose.model('Movies', MovieSchema);
+module.exports = mongoose.model('movie', MovieSchema);
