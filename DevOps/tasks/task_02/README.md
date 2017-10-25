@@ -9,7 +9,7 @@
 "C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe"
 ```
 - On your terminal, run  `npm run start`  this will start the server.
-- The server will start at: http://localhost:3000
+- The server will start at: http://localhost:3010
 
 ## RESTful API endpoints
 
