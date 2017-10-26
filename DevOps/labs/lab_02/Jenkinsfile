@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Commit') {
             steps {
-                git 'https://github.com/OvidioMiranda/tz-rest-api'
                 sh './gradlew clean assemble'
             }
         }
