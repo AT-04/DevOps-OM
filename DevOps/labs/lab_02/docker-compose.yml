@@ -16,6 +16,11 @@ services:
       - ./godata:/godata
       - ./go:/home/go
 
+  jenkins_ci:
+    image: "jenkinsci/blueocean"
+    ports:
+      - "8080:8080"
+
 networks:
   default:
     driver: bridge
