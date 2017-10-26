@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './gradlew check'
+                sh './gradlew clean check'
                 publishHTML target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
@@ -17,6 +17,20 @@ pipeline {
                     reportDir: 'build/reports/tests/test/',
                     reportFiles: 'index.html',
                     reportName: 'Unit Test Report'
+                ]
+            }
+        }
+        stage('CodeQuality') {
+            steps {
+                sh './gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000'
+                sh './gradlew jacocoTestReport'
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'build/jacocoHtml/',
+                    reportFiles: 'index.html',
+                    reportName: 'Code Coverage Report'
                 ]
             }
         }
