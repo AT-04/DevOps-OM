@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './gradlew clean check'
+                sh './gradlew check'
                 publishHTML target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh './gradlew clean shadowJar'
+                sh './gradlew shadowJar'
             }
         }
     }
