@@ -6,15 +6,15 @@ services:
       - "8153:8153"
       - "8154:8154"
     links:
-      - gocd_agent
+      - gocd_agent_ubuntu
 
-  gocd_agent:
-    image: "gocd/gocd-agent-alpine-3.5:v17.3.0"
+  gocd_agent_ubuntu:
+    image: "gocd/gocd-agent-ubuntu-16.04:v17.10.0"
     environment:
       - GO_SERVER_URL=https://gocd_server:8154/go
     volumes:
-      - ./godata:/godata
-      - ./go:/home/go
+      - ./godata_ubuntu:/godata
+      - ./go_ubuntu:/home/go
 
   jenkins_ci:
     image: "jenkinsci/blueocean"
@@ -27,7 +27,7 @@ services:
       - "9000:9000"
       - "9092:9092"
     links:
-      - gocd_agent
+      - gocd_agent_ubuntu
       - jenkins_ci
 
 networks:
