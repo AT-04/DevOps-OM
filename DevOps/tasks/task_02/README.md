@@ -13,12 +13,12 @@
 
 ## RESTful API endpoints
 
-### POST `/movies`
+### POST `/movie`
 
 Create a new movie.
 
 + Method: `POST`
-+ URL: `/movies`
++ URL: `/movie`
 + Body:
 
 ```js
@@ -29,25 +29,47 @@ Create a new movie.
 
 ```
 
-### GET `/movies`
+Response body example:
+```js
+{
+    "message": "Movie successfully added!",
+    "movie": {
+        "title": "Godzilla",
+        "year": 2000,
+        "_id": "5a005774c7df34021848b70c"
+    }
+}
+```
 
-Get all movies.
+### GET `/movie`
+
+Get all movie.
 
 + Method: `GET`
-+ URL: `/movies`
-### GET `/movies/:movieId`
++ URL: `/movie`
+### GET `/movie/:movieId`
 
 Get movie with specific id.
 
 + Method: `GET`
-+ URL: `/movies/59e927911d70d0sdd12b019b35a`
++ URL: `/movie/5a005774c7df34021848b70c`
 
-### PUT `/movies/:movieId`
+Response body example:
+
+```js
+{
+    "_id": "5a005774c7df34021848b70c",
+    "title": "Godzilla",
+    "year": 2000
+}
+```
+
+### PUT `/movie/:movieId`
 
 Update entire movie with specific id.
 
 + Method: `PUT`
-+ URL: `/movies/59e927911d70d0sdd12b019b35a`
++ URL: `/movie/5a005774c7df34021848b70c`
 + Body:
 
 ```js
@@ -59,9 +81,9 @@ Update entire movie with specific id.
 ```
 
 
-### DELETE `/movies/:movieId`
+### DELETE `/movie/:movieId`
 
 Delete movie with specific id.
 
 + Method: `DELETE`
-+ URL: `/movies/59e927911d70d0sdd12b019b35a`
++ URL: `/movie/5a005774c7df34021848b70c`
