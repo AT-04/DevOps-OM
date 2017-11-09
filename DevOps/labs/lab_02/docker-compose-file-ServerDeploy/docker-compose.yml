@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mongo_server:
+    image: 'mongo'
+    ports:
+      - '27017:27017'
+    volumes:
+      - ~/data/db:/data/db
+
+  cassandra_server:
+    image: 'cassandra'
+    ports:
+      - '9042:9042'
+    volumes:
+      - ~/cassandra/data:/var/lib/cassandra
